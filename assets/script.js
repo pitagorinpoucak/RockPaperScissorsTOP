@@ -65,5 +65,37 @@ function checkInput(input) {
   }
 }
 
-let playerInput = prompt("Rock/Paper/Scissors?");
-console.log(playRound(checkInput(playerInput), computerPlay()));
+function game() {
+  alert(
+    "Welcome to Rock/Paper/Scissors! First player to reach 5 wins is the winner!"
+  );
+  let playerWinCounter = 0;
+  let compWinCounter = 0;
+  let round = 1;
+
+  while (playerWinCounter < 5 && compWinCounter < 5) {
+    console.log(`Round ${round}:`);
+    round++;
+    let playerInput = prompt("Rock/Paper/Scissors?");
+    let gameStatus = playRound(checkInput(playerInput), computerPlay());
+
+    if (gameStatus.includes("WIN")) {
+      playerWinCounter++;
+    } else if (gameStatus.includes("LOSE")) {
+      compWinCounter++;
+    }
+    console.log(gameStatus);
+    console.log(`
+    Player score: ${playerWinCounter}
+    Computer score: ${compWinCounter}
+    `);
+  }
+
+  if (playerWinCounter > compWinCounter) {
+    alert("Congratulations!! You are the WINNER!!");
+  } else {
+    alert("We're terribly sorry. You LOOSE!");
+  }
+}
+
+game();
