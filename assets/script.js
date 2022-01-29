@@ -1,19 +1,73 @@
 function computerPlay() {
-  let randomNumber = Math.floor(Math.random() * 9 + 1);
+  let randomNumber = Math.floor(Math.random() * 5 + 1);
   switch (randomNumber) {
     case 1:
-    case 2:
-    case 3:
       return "Rock";
-    case 4:
-    case 5:
-    case 6:
+    case 2:
       return "Paper";
-    case 7:
-    case 8:
-    case 9:
+    case 3:
       return "Scissors";
+    case 4:
+      return "Lizard";
+    case 5:
+      return "Spock";
   }
+}
+
+function checkForWin(player, computer) {
+  switch (player) {
+    case "rock":
+      if (computer === "paper") {
+        return "You LOSE! Paper beats Rock.";
+      } else if (computer === "scissors") {
+        return "You WIN! Rock beats Scissors.";
+      } else if (computer === "lizard") {
+        return "You WIN! Rock crushes Lizard";
+      } else if (computer === "spock") {
+        return "You LOSE! Spock vaporizes Rock.";
+      }
+    case "paper":
+      if (computer === "scissors") {
+        return "You LOSE! Scissors cuts Paper.";
+      } else if (computer === "lizard") {
+        return "You LOSE! Lizard eats Paper.";
+      } else if (computer === "spock") {
+        return "You WIN! Paper disproves Spock.";
+      } else if (computer === "rock") {
+        return "You WIN! Paper covers Rock.";
+      }
+    case "scissors":
+      if (computer === "lizard") {
+        return "You WIN! Scissors decapitate Lizard";
+      } else if (computer === "spock") {
+        return "You LOSE! Spock smashes Scissors.";
+      } else if (computer === "rock") {
+        return "You LOSE! Rock crushes Scissors.";
+      } else if (computer === "paper") {
+        return "You WIN! Scissors cuts Paper.";
+      }
+    case "lizard":
+      if (computer === "spock") {
+        return "You WIN! Lizard poisons Spock.";
+      } else if (computer === "rock") {
+        return "You LOSE! Rock crushes Lizard.";
+      } else if (computer === "paper") {
+        return "You WIN! Lizard eats Paper.";
+      } else if (computer === "scissors") {
+        return "You LOSE! Scissors decapitates Lizard.";
+      }
+    case "spock":
+      if (computer === "rock") {
+        return "You WIN! Spock vaporizes Rock.";
+      } else if (computer === "paper") {
+        return "You LOSE! Paper disproves Spock.";
+      } else if (computer === "scissors") {
+        return "You WIN! Spock smashes Scissors.";
+      } else if (computer === "lizard") {
+        return "You LOSE! Lizard poisons Spock.";
+      }
+  }
+  return "error!";
 }
 
 function playRound(plSel, compSel) {
@@ -22,27 +76,8 @@ function playRound(plSel, compSel) {
 
   if (playerSelection === computerSelection) {
     return `Both players chose ${compSel}! It's a TIE!`;
-  }
-  switch (playerSelection) {
-    case "rock":
-      if (computerSelection === "paper") {
-        return "You LOSE! Paper beats Rock.";
-      } else {
-        return "You WIN! Rock beats Scissors.";
-      }
-    case "paper":
-      if (computerSelection === "scissors") {
-        return "You LOSE! Scissors cuts Paper.";
-      } else {
-        return "You WIN! Paper covers Rock.";
-      }
-    case "scissors":
-      if (computerSelection === "rock") {
-        return "You LOSE! Rock crushes Scissors.";
-      } else {
-        return "You WIN! Scissors cut Paper.";
-      }
-    default:
+  } else {
+    return checkForWin(playerSelection, computerSelection);
   }
 }
 
@@ -54,7 +89,9 @@ function checkInput(input) {
     if (
       inputLower === "rock" ||
       inputLower === "paper" ||
-      inputLower === "scissors"
+      inputLower === "scissors" ||
+      inputLower === "lizard" ||
+      inputLower === "spock"
     ) {
       return inputLower;
     } else {
@@ -67,7 +104,7 @@ function checkInput(input) {
 
 function game() {
   alert(
-    "Welcome to Rock/Paper/Scissors! First player to reach 5 wins is the winner!"
+    "Welcome to Rock/Paper/Scissors/Lizard/Spock! First player to reach 5 wins is the winner!"
   );
   let playerWinCounter = 0;
   let compWinCounter = 0;
@@ -76,7 +113,7 @@ function game() {
   while (playerWinCounter < 5 && compWinCounter < 5) {
     console.log(`Round ${round}:`);
     round++;
-    let playerInput = prompt("Rock/Paper/Scissors?");
+    let playerInput = prompt("Rock/Paper/Scissors/Lizard/Spock?");
     let gameStatus = playRound(checkInput(playerInput), computerPlay());
 
     if (gameStatus.includes("WIN")) {

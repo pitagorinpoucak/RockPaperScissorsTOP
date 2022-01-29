@@ -13,6 +13,12 @@
         - Added score counters<br>
     </p>
 
+<h4>v0.04 Rock/Paper/Scissors/Lizard/Spock</h4>
+
+<p>- Expanded the game to include Lizard and Spock<br>
+- Moved win logic to outer function to make code a bit cleaner<br>
+</p>
+
 <h4>What I learned?</h4>
     <p>- Worked on my troubleshooting skills<br>
         - Worked on my debugging skills<br>
