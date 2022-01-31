@@ -1,3 +1,9 @@
+//DOM MANIPULATION
+
+function weaponOfChoice() {}
+
+//GAME LOGIC
+
 function computerPlay() {
   let randomNumber = Math.floor(Math.random() * 5 + 1);
   switch (randomNumber) {
@@ -95,17 +101,17 @@ function checkInput(input) {
     ) {
       return inputLower;
     } else {
-      inputLower = prompt(
-        "Please input correct expression: Rock/Paper/Scissors. Case doesn't matter"
-      ).toLowerCase();
+      // inputLower = prompt(
+      //   "Please input correct expression: Rock/Paper/Scissors. Case doesn't matter"
+      // ).toLowerCase();
     }
   }
 }
 
 function game() {
-  alert(
-    "Welcome to Rock/Paper/Scissors/Lizard/Spock! First player to reach 5 wins is the winner!"
-  );
+  //alert(
+  // "Welcome to Rock/Paper/Scissors/Lizard/Spock! First player to reach 5 wins is the winner!"
+  //);
   let playerWinCounter = 0;
   let compWinCounter = 0;
   let round = 1;
@@ -113,7 +119,7 @@ function game() {
   while (playerWinCounter < 5 && compWinCounter < 5) {
     console.log(`Round ${round}:`);
     round++;
-    let playerInput = prompt("Rock/Paper/Scissors/Lizard/Spock?");
+    //let playerInput = prompt("Rock/Paper/Scissors/Lizard/Spock?");
     let gameStatus = playRound(checkInput(playerInput), computerPlay());
 
     if (gameStatus.includes("WIN")) {
@@ -121,18 +127,18 @@ function game() {
     } else if (gameStatus.includes("LOSE")) {
       compWinCounter++;
     }
-    console.log(gameStatus);
+    /*console.log(gameStatus);
     console.log(`
     Player score: ${playerWinCounter}
     Computer score: ${compWinCounter}
-    `);
+    `);*/
   }
 
-  if (playerWinCounter > compWinCounter) {
+  /*if (playerWinCounter > compWinCounter) {
     alert("Congratulations!! You are the WINNER!!");
   } else {
     alert("We're terribly sorry. You LOOSE!");
-  }
+  }*/
 }
 
 game();
