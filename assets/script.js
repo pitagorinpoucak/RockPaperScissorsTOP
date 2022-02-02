@@ -1,3 +1,13 @@
+/*
+1. on button click start round
+2. on round start call for pc input
+3. resolve the game
+4. update round counter and score
+5. write information to div
+6. rinse and repeat
+
+*/
+
 //DOM MANIPULATION
 
 function getUserInput() {
@@ -7,7 +17,7 @@ function getUserInput() {
       console.log(this.id);
     });
   });*/
-  let userInput;
+  var userInput;
   const button = document.querySelectorAll(".userInput");
   for (let i = 0; i < button.length; i++) {
     userInput = button[i].addEventListener("click", setUserInput);
