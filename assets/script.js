@@ -1,13 +1,24 @@
 //DOM MANIPULATION
 
 function getUserInput() {
-  const userInput = document.querySelectorAll("button");
+  /*const userInput = document.querySelectorAll("button");
   userInput.forEach(function (element) {
     element.addEventListener("click", function (e) {
       console.log(this.id);
     });
-  });
+  });*/
+  let userInput;
+  const button = document.querySelectorAll(".userInput");
+  for (let i = 0; i < button.length; i++) {
+    userInput = button[i].addEventListener("click", setUserInput);
+  }
+  console.log(userInput);
 }
+
+function setUserInput(e) {
+  return this.id;
+}
+
 getUserInput();
 //GAME LOGIC
 /*
