@@ -1,9 +1,16 @@
 //DOM MANIPULATION
 
-function weaponOfChoice() {}
-
+function getUserInput() {
+  const userInput = document.querySelectorAll("button");
+  userInput.forEach(function (element) {
+    element.addEventListener("click", function (e) {
+      console.log(this.id);
+    });
+  });
+}
+getUserInput();
 //GAME LOGIC
-
+/*
 function computerPlay() {
   let randomNumber = Math.floor(Math.random() * 5 + 1);
   switch (randomNumber) {
@@ -119,7 +126,7 @@ function game() {
   while (playerWinCounter < 5 && compWinCounter < 5) {
     console.log(`Round ${round}:`);
     round++;
-    //let playerInput = prompt("Rock/Paper/Scissors/Lizard/Spock?");
+    let playerInput = prompt("Rock/Paper/Scissors/Lizard/Spock?");
     let gameStatus = playRound(checkInput(playerInput), computerPlay());
 
     if (gameStatus.includes("WIN")) {
@@ -131,14 +138,16 @@ function game() {
     console.log(`
     Player score: ${playerWinCounter}
     Computer score: ${compWinCounter}
-    `);*/
+    `);
   }
 
-  /*if (playerWinCounter > compWinCounter) {
+  if (playerWinCounter > compWinCounter) {
     alert("Congratulations!! You are the WINNER!!");
   } else {
     alert("We're terribly sorry. You LOOSE!");
-  }*/
+  }
+  getUserInput();
 }
 
 game();
+*/
