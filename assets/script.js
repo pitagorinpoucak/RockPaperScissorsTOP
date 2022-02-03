@@ -1,25 +1,48 @@
+let userScore = 0;
+let computerScore = 0;
+let roundCounter = 0;
+game();
+
+function game() {
+  const buttons = document.querySelectorAll(".userInput");
+  buttons.forEach((button) => button.addEventListener("click", playRound));
+}
+
 function playRound(e) {
   let computerSelection = computerPlay();
   console.log(this.id);
   let playerSelection = this.id;
   if (playerSelection === computerSelection) {
     console.log(`Both players chose ${computerSelection}! It's a TIE!`);
+    roundCounter++;
   } else {
     console.log(checkForWin(playerSelection, computerSelection));
+    if (checkForWin(playerSelection, computerSelection)) {
+      userScore++;
+      roundCounter++;
+    } else {
+      computerScore++;
+      roundCounter++;
+    }
   }
+  writePlayerScore(userScore);
+  writeComputerScore(computerScore);
+  writeRoundCount(roundCounter);
 }
 
-//1. on button click start round
-
-function game() {
-  let userScore;
-  let computerScore = 0;
-  let roundCounter = 0;
-
-  const buttons = document.querySelectorAll(".userInput");
-  buttons.forEach((button) => button.addEventListener("click", playRound));
+function writePlayerScore(score) {
+  const playerScoreDiv = document.getElementById("playerScore");
+  playerScoreDiv.textContent = score;
 }
-game();
+
+function writeComputerScore(score) {
+  const computerScoreDiv = document.getElementById("computerScore");
+  computerScoreDiv.textContent = score;
+}
+function writeRoundCount(count) {
+  const roundCounterDiv = document.getElementById("roundCounter");
+  roundCounterDiv.textContent = count;
+}
 
 function computerPlay() {
   let randomNumber = Math.floor(Math.random() * 5 + 1);
@@ -39,54 +62,34 @@ function computerPlay() {
 function checkForWin(player, computer) {
   switch (player) {
     case "rock":
-      if (computer === "paper") {
-        return "You LOSE! Paper beats Rock.";
-      } else if (computer === "scissors") {
-        return "You WIN! Rock beats Scissors.";
-      } else if (computer === "lizard") {
-        return "You WIN! Rock crushes Lizard";
-      } else if (computer === "spock") {
-        return "You LOSE! Spock vaporizes Rock.";
+      if (computer === "paper" || computer === "spock") {
+        return false;
+      } else if (computer === "scissors" || computer === "lizard") {
+        return true;
       }
     case "paper":
-      if (computer === "scissors") {
-        return "You LOSE! Scissors cuts Paper.";
-      } else if (computer === "lizard") {
-        return "You LOSE! Lizard eats Paper.";
-      } else if (computer === "spock") {
-        return "You WIN! Paper disproves Spock.";
-      } else if (computer === "rock") {
-        return "You WIN! Paper covers Rock.";
+      if (computer === "scissors" || computer === "lizard") {
+        return false;
+      } else if (computer === "spock" || computer === "rock") {
+        return true;
       }
     case "scissors":
-      if (computer === "lizard") {
-        return "You WIN! Scissors decapitate Lizard";
-      } else if (computer === "spock") {
-        return "You LOSE! Spock smashes Scissors.";
-      } else if (computer === "rock") {
-        return "You LOSE! Rock crushes Scissors.";
-      } else if (computer === "paper") {
-        return "You WIN! Scissors cuts Paper.";
+      if (computer === "spock" || computer === "rock") {
+        return false;
+      } else if (computer === "lizard" || computer === "paper") {
+        return true;
       }
     case "lizard":
-      if (computer === "spock") {
-        return "You WIN! Lizard poisons Spock.";
-      } else if (computer === "rock") {
-        return "You LOSE! Rock crushes Lizard.";
-      } else if (computer === "paper") {
-        return "You WIN! Lizard eats Paper.";
-      } else if (computer === "scissors") {
-        return "You LOSE! Scissors decapitates Lizard.";
+      if (computer === "rock" || computer === "scissors") {
+        return false;
+      } else if (computer === "spock" || computer === "paper") {
+        return true;
       }
     case "spock":
-      if (computer === "rock") {
-        return "You WIN! Spock vaporizes Rock.";
-      } else if (computer === "paper") {
-        return "You LOSE! Paper disproves Spock.";
-      } else if (computer === "scissors") {
-        return "You WIN! Spock smashes Scissors.";
-      } else if (computer === "lizard") {
-        return "You LOSE! Lizard poisons Spock.";
+      if (computer === "paper" || computer === "lizard") {
+        return false;
+      } else if (computer === "rock" || computer === "scissors") {
+        return true;
       }
   }
   return "error!";
