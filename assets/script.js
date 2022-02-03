@@ -1,4 +1,4 @@
-let userScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 let roundCounter = 0;
 game();
@@ -10,24 +10,27 @@ function game() {
 
 function playRound(e) {
   let computerSelection = computerPlay();
-  console.log(this.id);
   let playerSelection = this.id;
   if (playerSelection === computerSelection) {
-    console.log(`Both players chose ${computerSelection}! It's a TIE!`);
-    roundCounter++;
+    writeStatus("TIE");
   } else {
-    console.log(checkForWin(playerSelection, computerSelection));
     if (checkForWin(playerSelection, computerSelection)) {
-      userScore++;
-      roundCounter++;
+      playerScore++;
+      writeStatus("WIN!!");
     } else {
       computerScore++;
-      roundCounter++;
+      writeStatus("LOSE!");
     }
   }
-  writePlayerScore(userScore);
+  roundCounter++;
+  writePlayerScore(playerScore);
   writeComputerScore(computerScore);
   writeRoundCount(roundCounter);
+}
+
+function writeStatus(score) {
+  const statusDiv = document.getElementById("status");
+  statusDiv.textContent = score;
 }
 
 function writePlayerScore(score) {
