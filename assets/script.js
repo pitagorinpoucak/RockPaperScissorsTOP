@@ -1,53 +1,3 @@
-/*
-1. on button click start round
-2. on round start call for pc input
-3. resolve the game
-4. update round counter and score
-5. write information to div
-6. rinse and repeat
-
-*/
-
-//DOM MANIPULATION
-
-function getUserInput() {
-  /*const userInput = document.querySelectorAll("button");
-  userInput.forEach(function (element) {
-    element.addEventListener("click", function (e) {
-      console.log(this.id);
-    });
-  });*/
-  var userInput;
-  const button = document.querySelectorAll(".userInput");
-  for (let i = 0; i < button.length; i++) {
-    userInput = button[i].addEventListener("click", setUserInput);
-  }
-  console.log(userInput);
-}
-
-function setUserInput(e) {
-  return this.id;
-}
-
-getUserInput();
-//GAME LOGIC
-/*
-function computerPlay() {
-  let randomNumber = Math.floor(Math.random() * 5 + 1);
-  switch (randomNumber) {
-    case 1:
-      return "Rock";
-    case 2:
-      return "Paper";
-    case 3:
-      return "Scissors";
-    case 4:
-      return "Lizard";
-    case 5:
-      return "Spock";
-  }
-}
-
 function checkForWin(player, computer) {
   switch (player) {
     case "rock":
@@ -104,16 +54,74 @@ function checkForWin(player, computer) {
   return "error!";
 }
 
-function playRound(plSel, compSel) {
-  let playerSelection = plSel.toLowerCase();
-  let computerSelection = compSel.toLowerCase();
+function playRound(playerSelection) {
+  let computerSelection = computerPlay();
 
   if (playerSelection === computerSelection) {
-    return `Both players chose ${compSel}! It's a TIE!`;
+    return `Both players chose ${computerSelection}! It's a TIE!`;
   } else {
     return checkForWin(playerSelection, computerSelection);
   }
 }
+
+function computerPlay() {
+  let randomNumber = Math.floor(Math.random() * 5 + 1);
+  switch (randomNumber) {
+    case 1:
+      return "Rock";
+    case 2:
+      return "Paper";
+    case 3:
+      return "Scissors";
+    case 4:
+      return "Lizard";
+    case 5:
+      return "Spock";
+  }
+}
+
+//1. on button click start round
+
+function game() {
+  let userScore;
+  let computerScore = 0;
+  let roundCounter = 0;
+
+  const buttons = document.querySelector(".userInput");
+  buttons.addEventListener("click", playRound(buttons.id));
+}
+game();
+//2. on round start call for pc input
+//3. resolve the game
+//4. update round counter and score
+//5. write information to div
+//6. rinse and repeat
+
+//DOM MANIPULATION
+/*
+function getUserInput() {
+  const userInput = document.querySelectorAll("button");
+  userInput.forEach(function (element) {
+    element.addEventListener("click", function (e) {
+      console.log(this.id);
+    });  
+  });  
+  var userInput;
+  const button = document.querySelectorAll(".userInput");
+  for (let i = 0; i < button.length; i++) {
+    userInput = button[i].addEventListener("click", setUserInput);
+  }  
+  console.log(userInput);
+}  
+
+function setUserInput(e) {
+  return this.id;
+}  
+
+getUserInput();
+//GAME LOGIC
+/*
+
 
 function checkInput(input) {
   let bool = true;
