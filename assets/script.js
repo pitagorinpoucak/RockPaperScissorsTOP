@@ -3,9 +3,9 @@ function playRound(e) {
   console.log(this.id);
   let playerSelection = this.id;
   if (playerSelection === computerSelection) {
-    return `Both players chose ${computerSelection}! It's a TIE!`;
+    console.log(`Both players chose ${computerSelection}! It's a TIE!`);
   } else {
-    return checkForWin(playerSelection, computerSelection);
+    console.log(checkForWin(playerSelection, computerSelection));
   }
 }
 
@@ -20,20 +20,20 @@ function game() {
   buttons.forEach((button) => button.addEventListener("click", playRound));
 }
 game();
-/*
+
 function computerPlay() {
   let randomNumber = Math.floor(Math.random() * 5 + 1);
   switch (randomNumber) {
     case 1:
-      return "Rock";
+      return "rock";
     case 2:
-      return "Paper";
+      return "paper";
     case 3:
-      return "Scissors";
+      return "scissors";
     case 4:
-      return "Lizard";
+      return "lizard";
     case 5:
-      return "Spock";
+      return "spock";
   }
 }
 function checkForWin(player, computer) {
@@ -91,7 +91,7 @@ function checkForWin(player, computer) {
   }
   return "error!";
 }
-*/
+
 //2. on round start call for pc input
 //3. resolve the game
 //4. update round counter and score
