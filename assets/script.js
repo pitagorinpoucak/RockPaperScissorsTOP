@@ -1,3 +1,41 @@
+function playRound(e) {
+  let computerSelection = computerPlay();
+  console.log(this.id);
+  let playerSelection = this.id;
+  if (playerSelection === computerSelection) {
+    return `Both players chose ${computerSelection}! It's a TIE!`;
+  } else {
+    return checkForWin(playerSelection, computerSelection);
+  }
+}
+
+//1. on button click start round
+
+function game() {
+  let userScore;
+  let computerScore = 0;
+  let roundCounter = 0;
+
+  const buttons = document.querySelectorAll(".userInput");
+  buttons.forEach((button) => button.addEventListener("click", playRound));
+}
+game();
+/*
+function computerPlay() {
+  let randomNumber = Math.floor(Math.random() * 5 + 1);
+  switch (randomNumber) {
+    case 1:
+      return "Rock";
+    case 2:
+      return "Paper";
+    case 3:
+      return "Scissors";
+    case 4:
+      return "Lizard";
+    case 5:
+      return "Spock";
+  }
+}
 function checkForWin(player, computer) {
   switch (player) {
     case "rock":
@@ -53,44 +91,7 @@ function checkForWin(player, computer) {
   }
   return "error!";
 }
-
-function playRound(playerSelection) {
-  let computerSelection = computerPlay();
-
-  if (playerSelection === computerSelection) {
-    return `Both players chose ${computerSelection}! It's a TIE!`;
-  } else {
-    return checkForWin(playerSelection, computerSelection);
-  }
-}
-
-function computerPlay() {
-  let randomNumber = Math.floor(Math.random() * 5 + 1);
-  switch (randomNumber) {
-    case 1:
-      return "Rock";
-    case 2:
-      return "Paper";
-    case 3:
-      return "Scissors";
-    case 4:
-      return "Lizard";
-    case 5:
-      return "Spock";
-  }
-}
-
-//1. on button click start round
-
-function game() {
-  let userScore;
-  let computerScore = 0;
-  let roundCounter = 0;
-
-  const buttons = document.querySelector(".userInput");
-  buttons.addEventListener("click", playRound(buttons.id));
-}
-game();
+*/
 //2. on round start call for pc input
 //3. resolve the game
 //4. update round counter and score
