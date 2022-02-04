@@ -11,6 +11,8 @@ function game() {
 function playRound(e) {
   let computerSelection = computerPlay();
   let playerSelection = this.id;
+  drawPlayerChoice(playerSelection);
+  drawComputerChoice(computerSelection);
   if (playerSelection === computerSelection) {
     writeStatus("TIE");
   } else {
@@ -23,9 +25,20 @@ function playRound(e) {
     }
   }
   roundCounter++;
+
   writePlayerScore(playerScore);
   writeComputerScore(computerScore);
   writeRoundCount(roundCounter);
+}
+
+function drawPlayerChoice(assetId) {
+  const playerChose = document.getElementById("playerChose");
+  playerChose.innerHTML = `<img src='assets/${assetId}.svg' alt='${assetId}'>`;
+}
+
+function drawComputerChoice(assetId) {
+  const computerChose = document.getElementById("computerChose");
+  computerChose.innerHTML = `<img src='assets/${assetId}.svg' alt='${assetId}'>`;
 }
 
 function writeStatus(score) {
