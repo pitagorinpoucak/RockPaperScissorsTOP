@@ -1,6 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let roundCounter = 0;
+let tieCounter = 0;
 game();
 
 function game() {
@@ -15,6 +16,7 @@ function playRound(e) {
   drawComputerChoice(computerSelection);
   if (playerSelection === computerSelection) {
     writeStatus("TIE");
+    tieCounter++;
   } else {
     if (checkForWin(playerSelection, computerSelection)) {
       playerScore++;
@@ -26,6 +28,7 @@ function playRound(e) {
   }
   roundCounter++;
 
+  writeTies(tieCounter);
   writePlayerScore(playerScore);
   writeComputerScore(computerScore);
   writeRoundCount(roundCounter);
@@ -33,12 +36,12 @@ function playRound(e) {
 
 function drawPlayerChoice(assetId) {
   const playerChose = document.getElementById("playerChose");
-  playerChose.innerHTML = `<img src='assets/${assetId}.svg' alt='${assetId}'>`;
+  playerChose.innerHTML = `<img src='./assets/${assetId}.svg' alt='${assetId}'>`;
 }
 
 function drawComputerChoice(assetId) {
   const computerChose = document.getElementById("computerChose");
-  computerChose.innerHTML = `<img src='assets/${assetId}.svg' alt='${assetId}'>`;
+  computerChose.innerHTML = `<img src='./assets/${assetId}.svg' alt='${assetId}'>`;
 }
 
 function writeStatus(score) {
@@ -59,7 +62,10 @@ function writeRoundCount(count) {
   const roundCounterDiv = document.getElementById("roundCounter");
   roundCounterDiv.textContent = count;
 }
-
+function writeTies(score) {
+  const tieDiv = document.getElementById("tieCounter");
+  tieDiv.textContent = score;
+}
 function computerPlay() {
   let randomNumber = Math.floor(Math.random() * 5 + 1);
   switch (randomNumber) {
@@ -110,93 +116,3 @@ function checkForWin(player, computer) {
   }
   return "error!";
 }
-
-//2. on round start call for pc input
-//3. resolve the game
-//4. update round counter and score
-//5. write information to div
-//6. rinse and repeat
-
-//DOM MANIPULATION
-/*
-function getUserInput() {
-  const userInput = document.querySelectorAll("button");
-  userInput.forEach(function (element) {
-    element.addEventListener("click", function (e) {
-      console.log(this.id);
-    });  
-  });  
-  var userInput;
-  const button = document.querySelectorAll(".userInput");
-  for (let i = 0; i < button.length; i++) {
-    userInput = button[i].addEventListener("click", setUserInput);
-  }  
-  console.log(userInput);
-}  
-
-function setUserInput(e) {
-  return this.id;
-}  
-
-getUserInput();
-//GAME LOGIC
-/*
-
-
-function checkInput(input) {
-  let bool = true;
-  inputLower = input.toLowerCase();
-
-  while (bool) {
-    if (
-      inputLower === "rock" ||
-      inputLower === "paper" ||
-      inputLower === "scissors" ||
-      inputLower === "lizard" ||
-      inputLower === "spock"
-    ) {
-      return inputLower;
-    } else {
-      // inputLower = prompt(
-      //   "Please input correct expression: Rock/Paper/Scissors. Case doesn't matter"
-      // ).toLowerCase();
-    }
-  }
-}
-
-function game() {
-  //alert(
-  // "Welcome to Rock/Paper/Scissors/Lizard/Spock! First player to reach 5 wins is the winner!"
-  //);
-  let playerWinCounter = 0;
-  let compWinCounter = 0;
-  let round = 1;
-
-  while (playerWinCounter < 5 && compWinCounter < 5) {
-    console.log(`Round ${round}:`);
-    round++;
-    let playerInput = prompt("Rock/Paper/Scissors/Lizard/Spock?");
-    let gameStatus = playRound(checkInput(playerInput), computerPlay());
-
-    if (gameStatus.includes("WIN")) {
-      playerWinCounter++;
-    } else if (gameStatus.includes("LOSE")) {
-      compWinCounter++;
-    }
-    /*console.log(gameStatus);
-    console.log(`
-    Player score: ${playerWinCounter}
-    Computer score: ${compWinCounter}
-    `);
-  }
-
-  if (playerWinCounter > compWinCounter) {
-    alert("Congratulations!! You are the WINNER!!");
-  } else {
-    alert("We're terribly sorry. You LOOSE!");
-  }
-  getUserInput();
-}
-
-game();
-*/

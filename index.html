@@ -9,48 +9,57 @@
     <script src="./assets/script.js" defer></script>
   </head>
   <body>
-    <button id="rock" class="userInput">
-      <img src="assets/rock.svg" alt="Rock" />
-    </button>
-    <button id="paper" class="userInput">
-      <img src="assets/paper.svg" alt="Paper" />
-    </button>
-    <button id="scissors" class="userInput">
-      <img src="assets/scissors.svg" alt="Scissors" />
-    </button>
-    <button id="lizard" class="userInput">
-      <img src="assets/lizard.svg" alt="Lizard" />
-    </button>
-    <button id="spock" class="userInput">
-      <img src="assets/spock.svg" alt="Spock" />
-    </button>
-
     <div id="arena">
-      <div>
-        You chose:
-        <div id="playerChose"></div>
+      <div class="player">
+        <div class="rowOne rows">
+          <div id="rock" class="userInput">
+            <img src="./assets/rock.svg" alt="Rock" />
+          </div>
+          <div id="paper" class="userInput">
+            <img src="./assets/paper.svg" alt="Paper" />
+          </div>
+        </div>
+        <div class="rowTwo rows">
+          <div id="scissors" class="userInput">
+            <img src="./assets/scissors.svg" alt="Scissors" />
+          </div>
+
+          <div id="playerChose"></div>
+
+          <div id="lizard" class="userInput">
+            <img src="./assets/lizard.svg" alt="Lizard" />
+          </div>
+        </div>
+        <div class="rowThree rows">
+          <div id="spock" class="userInput">
+            <img src="./assets/spock.svg" alt="Spock" />
+          </div>
+        </div>
       </div>
+      <div id="status"></div>
+
       <div>
         Opponent chose:
         <div id="computerChose"></div>
       </div>
     </div>
-
-    <div>
-      STATUS:
-      <div id="status"></div>
+    <div id="score">
+      <div>
+        Player score:
+        <div id="playerScore"></div>
+      </div>
+      <div>
+        Round:
+        <div id="roundCounter"></div>
+      </div>
+      <div>
+        Computer score:
+        <div id="computerScore"></div>
+      </div>
     </div>
-    <div>
-      Player score:
-      <div id="playerScore"></div>
-    </div>
-    <div>
-      Computer score:
-      <div id="computerScore"></div>
-    </div>
-    <div>
-      Round:
-      <div id="roundCounter"></div>
+    <div class="counter">
+      Ties:
+      <div id="tieCounter"></div>
     </div>
   </body>
 </html>

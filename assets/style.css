@@ -1,0 +1,54 @@
+#arena {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+}
+
+.rows {
+  display: flex;
+  gap: 10px;
+}
+
+.rowOne {
+  justify-content: space-around;
+}
+
+.rowTwo {
+  justify-content: space-between;
+}
+
+#playerChose {
+  min-width: 100px;
+}
+
+.rowThree {
+  justify-content: center;
+}
+
+#status {
+  min-width: 300px;
+  font-size: xx-large;
+  font-weight: 800;
+}
+
+#score {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+  font-size: large;
+}
+
+.userInput:hover {
+  background-color: aqua;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
