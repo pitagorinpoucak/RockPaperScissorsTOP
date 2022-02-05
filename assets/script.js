@@ -63,10 +63,26 @@ function playRound(e) {
 
 function gameOver() {
   const ending = document.getElementById("status");
-
   ending.innerText = "GAME OVER";
   ending.classList.add("finishedGame");
-  ending.addEventListener("click", (e) => window.location.reload());
+  ending.addEventListener("animationend", reset);
+}
+
+function reset(e) {
+  playerScore = 0;
+  computerScore = 0;
+  tieCounter = 0;
+  roundCounter = 0;
+  window.addEventListener("click", (e) => {
+    document
+      .getElementById("status")
+      .removeEventListener("animationend", reset);
+    document.getElementById("status").classList.remove("finishedGame");
+  });
+  writeTies(tieCounter);
+  writePlayerScore(playerScore);
+  writeComputerScore(computerScore);
+  writeRoundCount(roundCounter);
 }
 
 function drawPlayerChoice(assetId) {

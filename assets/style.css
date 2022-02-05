@@ -146,9 +146,15 @@ h1 {
 }
 
 .finishedGame {
-  background-color: blue;
+  border: 7.5px solid black;
+  border-radius: 20px;
+  background-color: #555;
+  text-shadow: 0 0 10px white;
 
   z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   animation: endgame 5s ease-in-out forwards;
 }
@@ -160,4 +166,9 @@ h1 {
   to {
     transform: scale(7);
   }
+}
+
+.buttons {
+  border: 5px solid black;
+  border-radius: 5px;
 }
