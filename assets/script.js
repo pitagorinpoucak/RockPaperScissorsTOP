@@ -11,16 +11,7 @@ function game() {
   });
 }
 
-function buttonShrink(e) {
-  const button = document.getElementById(`${this.id}`);
-
-  console.log(button);
-}
-
-function wipe() {
-  const wiper = document.querySelectorAll(".userInput, .computerInput");
-  wiper.forEach((el) => el.classList.remove("chosen"));
-}
+//GAME LOGIC
 
 function playRound(e) {
   wipe();
@@ -61,67 +52,6 @@ function playRound(e) {
   }
 }
 
-function gameOver() {
-  const ending = document.getElementById("status");
-  ending.innerText = "GAME OVER";
-  ending.classList.add("finishedGame");
-  ending.addEventListener("animationend", reset);
-}
-
-function reset(e) {
-  playerScore = 0;
-  computerScore = 0;
-  tieCounter = 0;
-  roundCounter = 0;
-  window.addEventListener("click", (e) => {
-    document
-      .getElementById("status")
-      .removeEventListener("animationend", reset);
-    document.getElementById("status").classList.remove("finishedGame");
-  });
-  writeTies(tieCounter);
-  writePlayerScore(playerScore);
-  writeComputerScore(computerScore);
-  writeRoundCount(roundCounter);
-}
-
-function drawPlayerChoice(assetId) {
-  const playerChose = document.getElementById("playerChose");
-  playerChose.innerHTML = `<img src='./assets/${assetId}.svg' alt='${assetId}'>`;
-}
-
-function drawComputerChoice(assetId) {
-  const computerChose = document.getElementById("computerChose");
-  computerChose.innerHTML = `<img src='./assets/${assetId}.svg' alt='${assetId}'>`;
-}
-
-function writeStatus(score) {
-  const statusDiv = document.getElementById("status");
-  statusDiv.classList.add("status");
-  statusDiv.textContent = score;
-
-  statusDiv.addEventListener("animationend", (e) => {
-    document.getElementById("status").classList.remove("status");
-  });
-}
-
-function writePlayerScore(score) {
-  const playerScoreDiv = document.getElementById("playerScore");
-  playerScoreDiv.textContent = score;
-}
-
-function writeComputerScore(score) {
-  const computerScoreDiv = document.getElementById("computerScore");
-  computerScoreDiv.textContent = score;
-}
-function writeRoundCount(count) {
-  const roundCounterDiv = document.getElementById("roundCounter");
-  roundCounterDiv.textContent = count;
-}
-function writeTies(score) {
-  const tieDiv = document.getElementById("tieCounter");
-  tieDiv.textContent = score;
-}
 function computerPlay() {
   let randomNumber = Math.floor(Math.random() * 5 + 1);
   switch (randomNumber) {
@@ -171,4 +101,85 @@ function checkForWin(player, computer) {
       }
   }
   return "error!";
+}
+
+//SCORE KEEPING
+
+function writeStatus(score) {
+  const statusDiv = document.getElementById("status");
+  statusDiv.classList.add("status");
+  statusDiv.textContent = score;
+
+  statusDiv.addEventListener("animationend", (e) => {
+    document.getElementById("status").classList.remove("status");
+  });
+}
+
+function writePlayerScore(score = 0) {
+  const playerScoreDiv = document.getElementById("playerScore");
+  playerScoreDiv.textContent = score;
+}
+
+function writeComputerScore(score = 0) {
+  const computerScoreDiv = document.getElementById("computerScore");
+  computerScoreDiv.textContent = score;
+}
+function writeRoundCount(count = 0) {
+  const roundCounterDiv = document.getElementById("roundCounter");
+  roundCounterDiv.textContent = count;
+}
+function writeTies(score = 0) {
+  const tieDiv = document.getElementById("tieCounter");
+  tieDiv.textContent = score;
+}
+
+//ANIMATIONS
+
+function buttonShrink(e) {
+  const button = document.getElementById(`${this.id}`);
+  console.log(button);
+}
+
+function wipe() {
+  const wiper = document.querySelectorAll(".userInput, .computerInput");
+  wiper.forEach((el) => el.classList.remove("chosen"));
+}
+
+function gameOver() {
+  const ending = document.getElementById("status");
+
+  if (playerScore > computerScore) {
+    ending.innerText = "PLAYER WON!!";
+    ending.style.backgroundColor = "green";
+  } else if (playerScore < computerScore) {
+    ending.innerText = "COMPUTER WON";
+    ending.style.backgroundColor = "red";
+  } else {
+    ending.innerText = "IT'S A TIE!";
+    ending.style.backgroundColor = "yellow";
+  }
+
+  ending.classList.add("finishedGame");
+  ending.addEventListener("animationend", reset);
+}
+
+function reset(e) {
+  document.getElementById("status").addEventListener("click", (e) => {
+    window.location.reload();
+    /*document
+      .getElementById("status")
+      .removeEventListener("animationend", reset);
+    document.getElementById("status").classList.remove("finishedGame");
+    document.getElementById("status").style.backgroundColor = "transparent";*/
+  });
+}
+
+function drawPlayerChoice(assetId) {
+  const playerChose = document.getElementById("playerChose");
+  playerChose.innerHTML = `<img src='./assets/${assetId}.svg' alt='${assetId}'>`;
+}
+
+function drawComputerChoice(assetId) {
+  const computerChose = document.getElementById("computerChose");
+  computerChose.innerHTML = `<img src='./assets/${assetId}.svg' alt='${assetId}'>`;
 }
