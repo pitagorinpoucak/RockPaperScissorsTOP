@@ -56,6 +56,17 @@ function playRound(e) {
   writePlayerScore(playerScore);
   writeComputerScore(computerScore);
   writeRoundCount(roundCounter);
+  if (playerScore === 5 || computerScore === 5) {
+    gameOver();
+  }
+}
+
+function gameOver() {
+  const ending = document.getElementById("status");
+
+  ending.innerText = "GAME OVER";
+  ending.classList.add("finishedGame");
+  ending.addEventListener("click", (e) => window.location.reload());
 }
 
 function drawPlayerChoice(assetId) {

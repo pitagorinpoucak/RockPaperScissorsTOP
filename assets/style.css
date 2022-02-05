@@ -1,11 +1,36 @@
 body {
   display: flex;
   flex-direction: column;
-  transform: scale(0.9);
+  transform: scale(0.95);
+  font-family: "Courier New", Courier, monospace;
 }
 
 h1 {
   align-self: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  margin: 1rem;
+  color: white;
+  text-shadow: 0 0 20px black;
+}
+
+.animated {
+  animation: vanish 5s ease-in-out forwards;
+}
+
+@keyframes vanish {
+  0% {
+    color: black;
+    transform: scale(1);
+  }
+  99% {
+    transform: scale(5);
+    color: transparent;
+  }
+  100% {
+    color: white;
+    text-shadow: 0 0 20px black;
+  }
 }
 
 #arena {
@@ -68,7 +93,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
-  font-size: large;
+  font-size: 1.5rem;
 }
 
 .userInput,
@@ -98,6 +123,8 @@ h1 {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+
+  font-size: 1.5rem;
 }
 
 .chosen {
@@ -106,4 +133,31 @@ h1 {
 
 .chosen:hover {
   background-color: #ffcd01;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+#footer img {
+  max-width: 1.5rem;
+}
+
+.finishedGame {
+  background-color: blue;
+
+  z-index: 999;
+
+  animation: endgame 5s ease-in-out forwards;
+}
+
+@keyframes endgame {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(7);
+  }
 }
