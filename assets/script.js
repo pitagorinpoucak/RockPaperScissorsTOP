@@ -6,24 +6,48 @@ game();
 
 function game() {
   const buttons = document.querySelectorAll(".userInput");
-  buttons.forEach((button) => button.addEventListener("click", playRound));
+  buttons.forEach((button) => {
+    button.addEventListener("click", playRound);
+  });
+}
+
+function buttonShrink(e) {
+  const button = document.getElementById(`${this.id}`);
+
+  console.log(button);
+}
+
+function wipe() {
+  const wiper = document.querySelectorAll(".userInput, .computerInput");
+  wiper.forEach((el) => el.classList.remove("chosen"));
 }
 
 function playRound(e) {
+  wipe();
   let computerSelection = computerPlay();
   let playerSelection = this.id;
+
+  document.getElementById(playerSelection).classList.add("chosen");
+  document.getElementById(computerSelection + "Comp").classList.add("chosen");
+
   drawPlayerChoice(playerSelection);
   drawComputerChoice(computerSelection);
   if (playerSelection === computerSelection) {
     writeStatus("TIE");
     tieCounter++;
+    document.getElementById("playerChose").style.backgroundColor = "orange";
+    document.getElementById("computerChose").style.backgroundColor = "orange";
   } else {
     if (checkForWin(playerSelection, computerSelection)) {
       playerScore++;
       writeStatus("WIN!!");
+      document.getElementById("playerChose").style.backgroundColor = "green";
+      document.getElementById("computerChose").style.backgroundColor = "red";
     } else {
       computerScore++;
       writeStatus("LOSE!");
+      document.getElementById("playerChose").style.backgroundColor = "red";
+      document.getElementById("computerChose").style.backgroundColor = "green";
     }
   }
   roundCounter++;
@@ -46,7 +70,12 @@ function drawComputerChoice(assetId) {
 
 function writeStatus(score) {
   const statusDiv = document.getElementById("status");
+  statusDiv.classList.add("status");
   statusDiv.textContent = score;
+
+  statusDiv.addEventListener("animationend", (e) => {
+    document.getElementById("status").classList.remove("status");
+  });
 }
 
 function writePlayerScore(score) {

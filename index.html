@@ -10,41 +10,7 @@
   </head>
   <body>
     <h1>Welcome to Rock-Paper-Scissors-Lizard-Spock!</h1>
-    <div id="arena">
-      <div class="player">
-        <div class="rowOne rows">
-          <div id="rock" class="userInput">
-            <img src="./assets/rock.svg" alt="Rock" />
-          </div>
-          <div id="paper" class="userInput">
-            <img src="./assets/paper.svg" alt="Paper" />
-          </div>
-        </div>
-        <div class="rowTwo rows">
-          <div id="scissors" class="userInput">
-            <img src="./assets/scissors.svg" alt="Scissors" />
-          </div>
-
-          <div id="playerChose" class="userInput"></div>
-
-          <div id="lizard" class="userInput">
-            <img src="./assets/lizard.svg" alt="Lizard" />
-          </div>
-        </div>
-        <div class="rowThree rows">
-          <div id="spock" class="userInput">
-            <img src="./assets/spock.svg" alt="Spock" />
-          </div>
-        </div>
-      </div>
-      <div id="status"></div>
-
-      <div>
-        Opponent chose:
-        <div id="computerChose"></div>
-      </div>
-    </div>
-    <div id="score">
+        <div id="score">
       <div>
         Player score:
         <div id="playerScore"></div>
@@ -62,5 +28,63 @@
       Ties:
       <div id="tieCounter"></div>
     </div>
+    <div id="arena">
+      <div class="player">
+        <div class="rowOne rows">
+          <div id="rock" class="userInput">
+            <img src="./assets/rock.svg" alt="Rock" />
+          </div>
+          <div id="paper" class="userInput">
+            <img src="./assets/paper.svg" alt="Paper" />
+          </div>
+        </div>
+        <div class="rowTwo rows">
+          <div id="scissors" class="userInput">
+            <img src="./assets/scissors.svg" alt="Scissors" />
+          </div>
+
+          <div id="playerChose" class="usersChoice"></div>
+
+          <div id="lizard" class="userInput">
+            <img src="./assets/lizard.svg" alt="Lizard" />
+          </div>
+        </div>
+        <div class="rowThree rows">
+          <div id="spock" class="userInput">
+            <img src="./assets/spock.svg" alt="Spock" />
+          </div>
+        </div>
+      </div>
+      <div id="status"></div>
+      <div class="computer">  
+        <div class="rowOne rows">
+          <div id="rockComp" class="computerInput">
+            <img src="./assets/rock.svg" alt="Rock" />
+          </div>
+          <div id="paperComp" class="computerInput">
+            <img src="./assets/paper.svg" alt="Paper" />
+          </div>
+        </div>
+        <div class="rowTwo rows">
+          <div id="scissorsComp" class="computerInput">
+            <img src="./assets/scissors.svg" alt="Scissors" />
+          </div>
+
+          <div id="computerChose" class="usersChoice"></div>
+
+          <div id="lizardComp" class="computerInput">
+            <img src="./assets/lizard.svg" alt="Lizard" />
+          </div>
+        </div>
+        <div class="rowThree rows">
+          <div id="spockComp" class="computerInput">
+            <img src="./assets/spock.svg" alt="Spock" />
+          </div>
+        </div>
+      </div>
+      </div>
+      
+    </div>
+
   </body>
 </html>
