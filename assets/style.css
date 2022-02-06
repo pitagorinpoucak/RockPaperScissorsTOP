@@ -160,11 +160,19 @@ h1 {
 }
 
 @keyframes endgame {
-  from {
+  0% {
     transform: scale(1);
   }
-  to {
-    transform: scale(4);
+  99% {
+    transform: scale(20);
+  }
+  100% {
+    background-color: transparent;
+    border-color: transparent;
+    color: transparent;
+    height: 100em;
+    flex-shrink: 0;
+    width: 100em;
   }
 }
 
